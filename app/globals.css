@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  img {
+    @apply object-cover object-center
+  }
+
+  .btn {
+    @apply hover:bg-sky-500/10 hover:text-sky-700 p-3 lg:py-2 font-semibold rounded-lg transition-colors duration-300 ease-in-out;
+  }
+}
