@@ -1,24 +1,32 @@
 import "./globals.css";
 import Header from "@components/Header";
-import { Inter } from 'next/font/google'
+import { Nunito } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({
+    subsets: ['latin'],
+    weight: [
+      "400",
+      "600",
+      "500",
+      "700"
+    ]
+})
 
 export const metadata = {
-	title: "Todo | Home",
-	description: "Dashboard of a Todo app",
+	  title: "OmniFocus | Home",
+	  description: "Dashboard of a Todo app",
 };
 
 const Layout = ({ children }) => {
 	return (
 		<html lang="en">
-			<body className={`bg-white text-slate-900 text-base dar:bg-slate-900 dar:text-slate-300 lg:grid lg:grid-cols-12 ${inter.className} tracking-wider leading-relaxed antialiased selection:bg-sky-500/10 selection:text-sky-700`}>
-          <Header />
+        <body className={`bg-white text-slate-900 text-base dark:bg-slate-900 dark:text-slate-400 overscroll-contain lg:grid lg:grid-cols-12 ${nunito.className} tracking-wider leading-relaxed antialiased selection:bg-sky-500/10 selection:text-sky-700 scroll-smooth transition-all ease-linear duration-100`}>
+            <Header />
 
-          <main className="lg:col-span-9 p-4 hidden">
-            { children }
-          </main>
-			</body>
+            <main className="lg:col-span-9 p-4">
+              { children }
+            </main>
+        </body>
 		</html>
 	);
 };
