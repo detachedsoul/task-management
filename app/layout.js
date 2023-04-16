@@ -15,7 +15,7 @@ const nunito = Nunito({
 
 export const metadata = {
 	  title: "OmniFocus | Home",
-	  description: "Dashboard of a Todo app",
+	  description: "Dashboard of a task management app",
 };
 
 const Layout = ({ children }) => {

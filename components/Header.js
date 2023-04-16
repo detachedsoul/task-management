@@ -53,7 +53,7 @@ const Header = () => {
 
     return (
 		<header className="lg:col-span-3 top-0 z-50 sticky">
-			<div className="flex justify-between gap-4 items-center border-b border-slate-300/50 p-4 bg-white/50 dark:bg-slate-900/50 dark:text-slate-400 dark:border-slate-800 lg:hidden backdrop-blur">
+			<div className="flex justify-between gap-4 items-center border-b border-slate-300/50 p-4 bg-white/50 dark:bg-slate-900/50 dark:text-slate-400 dark:border-slate-800 lg:hidden backdrop-blur-md">
 				<Link href="/">OmniFocus</Link>
 
 				<div className="flex items-center gap-2">
