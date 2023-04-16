@@ -27,7 +27,7 @@ const IndexProjectsCard = () => {
                 <Link className="rounded-xl grid gap-6 p-4 bg-gradient-to-tr from-blue-700 to-blue-500 text-white hover:from-blue-500 hover:to-blue-700 transition-all duration-500 ease-in-out" href="/">
                     <div className="flex items-center gap-4 justify-between">
                         <h3 className="font-bold text-lg">
-                            Develop Self-Esteem
+                            Meet The Woman of My Dreams
                         </h3>
 
                         <MoreHorizontal size={20} />
@@ -78,7 +78,7 @@ const IndexProjectsCard = () => {
                     </div>
                 </Link>
 
-                <Link className="rounded-xl grid gap-6 p-4 bg-gradient-to-tr from-black to-gray-600 text-white hover:from-gray-600 hover:to-black transition-all duration-500 ease-in-out" href="/">
+                <Link className="rounded-xl grid gap-6 p-4 bg-gradient-to-tr from-neutral-800 to-gray-600 text-white hover:from-gray-600 hover:to-neutral-800 transition-all duration-500 ease-in-out" href="/">
                     <div className="flex items-center gap-4 justify-between">
                         <h3 className="font-bold text-lg">
                             Make 2 Billion Naira

@@ -2,6 +2,7 @@
 
 import { FolderOpen, Menu, Search, LayoutGrid, CalendarDays, CalendarRange, CalendarSearch, Plus, X, Settings, Moon, Sun, Bell, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
+import useToggleNotificationBar from "@store/useToggleNotificationBar";
 import Image from "next/image";
 import Link from "next/link";
 import user from "@assets/img/user.jpg";
@@ -11,7 +12,22 @@ const Header = () => {
     const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
     const [theme, setTheme] = useState("");
 
+    const isNotificationBarOpen = useToggleNotificationBar((state) => state.isNotificationBarOpen);
+    const toggleNotificationBar = useToggleNotificationBar((state) => state.toggleNotificationBar);
+
     const toggleMobileNav = () => {
+        if (isNotificationBarOpen) {
+            toggleNotificationBar();
+
+            return;
+        }
+
+        if (isNotificationBarOpen && !isMobileNavOpen) {
+            toggleNotificationBar(false);
+
+            return;
+        }
+
         setIsMobileNavOpen(!isMobileNavOpen);
     };
 
@@ -67,12 +83,12 @@ const Header = () => {
 					</button>
 
 					<button
-						className={`btn ${isMobileNavOpen ? "bg-sky-500/10 text-sky-700" : ""}`}
+						className={`btn ${(isMobileNavOpen && !isNotificationBarOpen) || (!isMobileNavOpen && isNotificationBarOpen) ? "bg-sky-500/10 text-sky-700" : ""}`}
 						type="button"
 						aria-label="Toggle mobile nav bar"
 						onClick={toggleMobileNav}
 					>
-						{isMobileNavOpen ? (
+						{(isMobileNavOpen && !isNotificationBarOpen) || (!isMobileNavOpen && isNotificationBarOpen) ? (
                             <X size={20} />
                         ) : (
                             <Menu size={20} />
@@ -83,7 +99,7 @@ const Header = () => {
 
 			{/* Desktop sidebar */}
 			<div
-				className={`fixed w-full z-[1024] bg-white top-[4.76rem] h-full lg:border-r lg:border-slate-300/50 lg:dark:border-slate-800 lg:-translate-x-0 transition-transform ease-in-out duration-500 lg:w-1/4 lg:inset-0 lg:gap-0 dark:bg-slate-900 dark:text-slate-400 ${
+				className={`fixed w-full z-30 bg-white top-[4.76rem] h-full lg:border-r lg:border-slate-300/50 lg:dark:border-slate-800 lg:-translate-x-0 transition-transform ease-in-out duration-500 lg:w-1/4 lg:inset-0 lg:gap-0 dark:bg-slate-900 dark:text-slate-400 ${
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-full"
 				}`}
 			>
@@ -119,14 +135,20 @@ const Header = () => {
                             </div>
 
                             <div className="flex items-center justify-around gap-2 pl-2 text-slate-700">
-                                <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300 dark:hover:bg-slate-800 relative" type="button" aria-label="Messages">
-                                    <MessageSquare size={20} />
+                                <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300/50 dark:hover:bg-slate-800 relative" type="button" aria-label="Messages" onClick={() => {
+                                    toggleNotificationBar()
+                                    toggleMobileNav()
+                                }}>
+                                    <MessageSquare size={15} />
 
                                     <span className="h-2.5 w-2.5 rounded-full bg-rose-500 block absolute bottom-1.5 right-2"></span>
                                 </button>
 
-                                <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300 dark:hover:bg-slate-800 relative" type="button" aria-label="Notifications">
-                                    <Bell size={20} />
+                                <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300/50 dark:hover:bg-slate-800 relative" type="button" aria-label="Notifications" onClick={() => {
+                                    toggleNotificationBar()
+                                    toggleMobileNav()
+                                }}>
+                                    <Bell size={15} />
 
                                     <span className="h-2.5 w-2.5 rounded-full bg-rose-500 block absolute bottom-1.5 right-2"></span>
                                 </button>
@@ -292,7 +314,7 @@ const Header = () => {
 				</nav>
 			</div>
 
-            <div className={`absolute w-full z-[1024] top-full p-4 grid gap-4 lg:hidden lg:not-sr-only bg-white dark:bg-slate-900 rounded-b-xl border-b transition-all duration-500 ease-in-out dark:border-slate-800 border-slate-400/50 dark:focus-within:border-slate-400 focus-within:border-slate-800/50 ${isSearchBarOpen ? "translate-y-0" : "-translate-y-[200%]"}`}>
+            <div className={`absolute w-full z-50 top-full p-4 grid gap-4 lg:hidden lg:not-sr-only bg-white dark:bg-slate-900 rounded-b-xl border-b transition-all duration-500 ease-in-out dark:border-slate-800 border-slate-400/50 dark:focus-within:border-slate-400 focus-within:border-slate-800/50 ${isSearchBarOpen ? "translate-y-0" : "-translate-y-[200%]"}`}>
                 <div className="flex items-center gap-3 bg-white z-50 dark:bg-slate-900 dark:text-slate-400">
 					<Image
 						className="rounded-full h-[40px] w-[40px] border-2 border-slate-300/50"

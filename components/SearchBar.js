@@ -1,6 +1,11 @@
+"use client";
+
 import { Search, Bell, MessageSquare } from "lucide-react";
+import useToggleNotificationBar from "@store/useToggleNotificationBar";
 
 const SearchBar = () => {
+    const toggleNotificationBar = useToggleNotificationBar((state) => state.toggleNotificationBar);
+
     return (
         <div className="px-4 py-[calc(1rem+0.09rem)] border-b border-slate-300/50 dark:border-slate-800 hidden lg:grid lg:grid-cols-2 lg:items-center gap-8 divide-x divide-slate-300/50 sticky top-0 bg-white/50 z-50 dark:bg-slate-900/50 backdrop-blur dark:divide-slate-800">
             <form>
@@ -12,8 +17,8 @@ const SearchBar = () => {
             </form>
 
             <div className="grid grid-cols-2 gap-2 justify-between divide-x divide-slate-300/50 dark:divide-slate-800">
-                <div className="text-right px-2">
-                    <p className="font-bold">
+                <div className="px-2 grid place-items-center justify-items-end">
+                    <p className="font-bold text-right justify-self-end">
                         1:26 AM
                     </p>
 
@@ -23,14 +28,14 @@ const SearchBar = () => {
                 </div>
 
                 <div className="flex items-center justify-around gap-2 pl-2 text-slate-700">
-                    <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300 dark:hover:bg-slate-800 relative" type="button" aria-label="Messages">
-                        <MessageSquare size={20} />
+                    <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300/50 dark:hover:bg-slate-800 relative" type="button" aria-label="Messages" onClick={toggleNotificationBar}>
+                        <MessageSquare size={15} />
 
                         <span className="h-2.5 w-2.5 rounded-full bg-rose-500 block absolute bottom-1.5 right-2"></span>
                     </button>
 
-                    <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300 dark:hover:bg-slate-800 relative" type="button" aria-label="Notifications">
-                        <Bell size={20} />
+                    <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300/50 dark:hover:bg-slate-800 relative" type="button" aria-label="Notifications" onClick={toggleNotificationBar}>
+                        <Bell size={15} />
 
                         <span className="h-2.5 w-2.5 rounded-full bg-rose-500 block absolute bottom-1.5 right-2"></span>
                     </button>

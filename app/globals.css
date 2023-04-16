@@ -41,7 +41,6 @@
         @apply dark:[scrollbar-color:rgb(15_23_42_/_0.5)_rgb(100_116_139_/_0.5)] [scrollbar-color:rgb(100_116_139_/_0.5)_rgb(203_213_225_/_0.5)] rounded-xl box-border bg-clip-content
     }
 
-
     .no-scrollbar {
         scrollbar-width: none;
         -ms-overflow-style: none;
@@ -57,5 +56,9 @@
 
     .search-input {
         @apply border-none outline-none ring-0 focus:ring-0 focus:outline-none focus:border-none py-2 pl-2 placeholder:text-inherit placeholder:font-semibold pr-4
+    }
+
+    .input-checkbox {
+        @apply form-checkbox cursor-pointer
     }
 }
