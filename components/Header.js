@@ -1,6 +1,6 @@
 "use client";
 
-import { FolderOpen, Menu, Search, LayoutGrid, CalendarDays, CalendarRange, CalendarSearch, Plus, X, Settings, Moon, Sun } from "lucide-react";
+import { FolderOpen, Menu, Search, LayoutGrid, CalendarDays, CalendarRange, CalendarSearch, Plus, X, Settings, Moon, Sun, Bell, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,10 +8,15 @@ import user from "@assets/img/user.jpg";
 
 const Header = () => {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+    const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
     const [theme, setTheme] = useState("");
 
     const toggleMobileNav = () => {
         setIsMobileNavOpen(!isMobileNavOpen);
+    };
+
+    const toggleMobileSearchBar = () => {
+        setIsSearchBarOpen(!isSearchBarOpen);
     };
 
     useEffect(() => {
@@ -47,15 +52,16 @@ const Header = () => {
     };
 
     return (
-		<header className={`lg:col-span-3 top-0 z-50 lg:static ${isMobileNavOpen ? "relative overscroll-contain" : "sticky"}`}>
-			<div className="flex justify-between gap-4 items-center border-b border-slate-200 p-4 bg-white dark:bg-slate-900 dark:text-slate-400 dark:border-slate-800 lg:hidden">
+		<header className="lg:col-span-3 top-0 z-50 sticky">
+			<div className="flex justify-between gap-4 items-center border-b border-slate-300/50 p-4 bg-white/50 dark:bg-slate-900/50 dark:text-slate-400 dark:border-slate-800 lg:hidden backdrop-blur">
 				<Link href="/">OmniFocus</Link>
 
 				<div className="flex items-center gap-2">
 					<button
-						className="btn"
+						className={`btn ${isSearchBarOpen ? "bg-sky-500/10 text-sky-700" : ""}`}
 						type="button"
 						aria-label="Toggle search bar"
+						onClick={toggleMobileSearchBar}
 					>
 						<Search size={20} />
 					</button>
@@ -77,11 +83,11 @@ const Header = () => {
 
 			{/* Desktop sidebar */}
 			<div
-				className={`absolute w-full z-50 bg-white top-full flex flex-col gap-4 lg:border-r lg:border-slate-300/50 lg:-translate-x-0 transition-transform ease-in-out duration-500 lg:static dark:bg-slate-900 dark:text-slate-400 ${
+				className={`fixed w-full z-[1024] bg-white top-[4.76rem] h-full lg:border-r lg:border-slate-300/50 lg:dark:border-slate-800 lg:-translate-x-0 transition-transform ease-in-out duration-500 lg:w-1/4 lg:inset-0 lg:gap-0 dark:bg-slate-900 dark:text-slate-400 ${
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-full"
 				}`}
 			>
-				<div className="flex items-center gap-3 border-b border-slate-300/50 p-4 sticky top-0 bg-white z-50 dark:bg-slate-900 dark:text-slate-400">
+				<div className="lg:flex items-center gap-3 border-b border-slate-300/50 dark:border-slate-800 p-4 bg-white/50 z-50 dark:bg-slate-900/50 backdrop-blur dark:text-slate-400 hidden">
 					<Image
 						className="rounded-full h-[50px] w-[50px] border-2 border-slate-300/50"
 						src={user}
@@ -93,14 +99,40 @@ const Header = () => {
 					<div className="font-semibold -space-y-0.5 dark:text-slate-200">
 						<h3>Wisdom Ojimah</h3>
 
-						<p className="text-slate-500 text-sm dark:text-slate-300">
+						<p className="text-slate-500 text-sm dark:text-slate-400">
 							Morning, Wisdom
 						</p>
 					</div>
 				</div>
 
-                <nav className="px-4 relative overflow-y-auto overscroll-contain grid gap-12">
-                    <div className="divide-y-2 divide-slate-300/50">
+                <nav className="px-4 relative grid gap-12 overflow-y-auto no-scrollbar overscroll-contain h-[calc(100%-4.8rem)]">
+                    <div className="divide-y-2 divide-slate-300/50 dark:divide-slate-800">
+                        <div className="grid grid-cols-2 gap-2 justify-between divide-x divide-slate-300/50 dark:divide-slate-800 border-b border-slate-300/50 dark:border-slate-800 py-4 lg:hidden" hidden>
+                            <div className="text-right px-2">
+                                <p className="font-bold">
+                                    1:26 AM
+                                </p>
+
+                                <p className="text-sm">
+                                    Sunday, 16 April
+                                </p>
+                            </div>
+
+                            <div className="flex items-center justify-around gap-2 pl-2 text-slate-700">
+                                <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300 dark:hover:bg-slate-800 relative" type="button" aria-label="Messages">
+                                    <MessageSquare size={20} />
+
+                                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500 block absolute bottom-1.5 right-2"></span>
+                                </button>
+
+                                <button className="border rounded-full p-2 border-slate-300/50 dark:border-slate-800 hover:bg-slate-300 dark:hover:bg-slate-800 relative" type="button" aria-label="Notifications">
+                                    <Bell size={20} />
+
+                                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500 block absolute bottom-1.5 right-2"></span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div className="flex flex-col gap-3 py-8 lg:py-4">
                             <h2 className="text-slate-400 text-md pl-3 font-semibold dark:text-slate-200">
                                 MENU
@@ -236,7 +268,7 @@ const Header = () => {
                          </div>
                     </div>
 
-                    <div className="sticky bottom-0 rounded-full p-1.5 lg:p-1 bg-slate-300/50 mb-8 lg:mb-4 flex items-center justify-between gap-2 dark:bg-slate-800 dark:text-slate-300">
+                    <div className="rounded-full w-full p-1.5 lg:p-1 bg-slate-300/50 mb-8 lg:mb-4 flex items-center place-content-center justify-between gap-2 dark:bg-slate-800 dark:text-slate-300">
                         <button
                             className={`rounded-full py-1.5 lg:py-1 px-3 flex items-center gap-1.5 w-full justify-evenly hover:bg-slate-900 hover:text-slate-400 ${theme === "dark" ? "bg-slate-900 text-slate-400" : ""}`}
                             type="button"
@@ -259,6 +291,34 @@ const Header = () => {
                     </div>
 				</nav>
 			</div>
+
+            <div className={`absolute w-full z-[1024] top-full p-4 grid gap-4 lg:hidden lg:not-sr-only bg-white dark:bg-slate-900 rounded-b-xl border-b transition-all duration-500 ease-in-out dark:border-slate-800 border-slate-400/50 dark:focus-within:border-slate-400 focus-within:border-slate-800/50 ${isSearchBarOpen ? "translate-y-0" : "-translate-y-[200%]"}`}>
+                <div className="flex items-center gap-3 bg-white z-50 dark:bg-slate-900 dark:text-slate-400">
+					<Image
+						className="rounded-full h-[40px] w-[40px] border-2 border-slate-300/50"
+						src={user}
+						height={40}
+						width={40}
+						alt="Wisdom Ojimah"
+					/>
+
+					<div className="font-semibold -space-y-0.5 dark:text-slate-200">
+						<h3>Wisdom Ojimah</h3>
+
+						<p className="text-slate-500 text-sm dark:text-slate-400">
+							Morning, Wisdom
+						</p>
+					</div>
+				</div>
+
+                <form>
+                    <label className="border text-slate-400/50 border-slate-400/50 dark:border-slate-800 dark:focus-within:border-slate-400 transition-all ease-in-out duration-100 dark:focus-within:text-inherit rounded-full flex items-center py-0.5 pl-4 focus-within:text-slate-800/50 focus-within:border-slate-800/50" htmlFor="search-form">
+                        <Search size={20} />
+
+                        <input className="bg-inherit w-full search-input" type="search" placeholder="Find your tasks, projects, etc..." id="search-form" />
+                    </label>
+                </form>
+            </div>
 		</header>
 	);
 };
