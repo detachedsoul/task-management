@@ -17,13 +17,13 @@ const IndexProjectsCard = () => {
                     </p>
                 </div>
 
-                <button className="btn py-2 px-4 flex items-center gap-2 bg-sky-500/10 text-sky-700" type="button" title="Add new project">
+                <button className="btn py-2 px-4 flex items-center gap-2 bg-sky-100/50 text-sky-800 hover:text-sky-400 hover:bg-[#7dd3fc1a] dark:text-sky-500 dark:bg-[#7dd3fc1f]" type="button" title="Add new project">
                     <Plus size={15} />
                     Add
                 </button>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <Link className="rounded-xl grid gap-6 p-4 bg-gradient-to-tr from-blue-700 to-blue-500 text-white hover:from-blue-500 hover:to-blue-700 transition-all duration-500 ease-in-out" href="/">
                     <div className="flex items-center gap-4 justify-between">
                         <h3 className="font-bold text-lg">

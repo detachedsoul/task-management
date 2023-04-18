@@ -74,7 +74,7 @@ const Header = () => {
 
 				<div className="flex items-center gap-2">
 					<button
-						className={`btn ${isSearchBarOpen ? "bg-sky-500/10 text-sky-700" : ""}`}
+						className={`btn ${isSearchBarOpen ? "dark:text-sky-400 dark:bg-[#7dd3fc1a]" : ""}`}
 						type="button"
 						aria-label="Toggle search bar"
 						onClick={toggleMobileSearchBar}
@@ -83,7 +83,7 @@ const Header = () => {
 					</button>
 
 					<button
-						className={`btn ${(isMobileNavOpen && !isNotificationBarOpen) || (!isMobileNavOpen && isNotificationBarOpen) ? "bg-sky-500/10 text-sky-700" : ""}`}
+						className={`btn ${(isMobileNavOpen && !isNotificationBarOpen) || (!isMobileNavOpen && isNotificationBarOpen) ? "dark:text-sky-400 dark:bg-[#7dd3fc1a]" : ""}`}
 						type="button"
 						aria-label="Toggle mobile nav bar"
 						onClick={toggleMobileNav}
@@ -99,11 +99,11 @@ const Header = () => {
 
 			{/* Desktop sidebar */}
 			<div
-				className={`fixed w-full z-30 bg-white top-[4.76rem] h-full lg:border-r lg:border-slate-300/50 lg:dark:border-slate-800 lg:-translate-x-0 transition-transform ease-in-out duration-500 lg:w-1/4 lg:inset-0 lg:gap-0 dark:bg-slate-900 dark:text-slate-400 ${
+				className={`fixed w-full z-30 bg-white top-[4.76rem] h-full sm:top-0 sm:w-1/2 md:w-2/5 sm:border-r sm:border-slate-300/50 sm:dark:border-slate-800 lg:-translate-x-0 transition-transform ease-in-out duration-500 lg:w-1/4 lg:inset-0 lg:gap-0 dark:bg-slate-900 dark:text-slate-400 ${
 					isMobileNavOpen ? "translate-x-0" : "-translate-x-full"
 				}`}
 			>
-				<div className="lg:flex items-center gap-3 border-b border-slate-300/50 dark:border-slate-800 p-4 bg-white/50 z-50 dark:bg-slate-900/50 backdrop-blur dark:text-slate-400 hidden">
+				<div className="md:flex items-center gap-3 border-b border-slate-300/50 dark:border-slate-800 px-4 py-[0.8rem] lg:py-4 bg-white/50 z-50 dark:bg-slate-900/50 backdrop-blur dark:text-slate-400 hidden">
 					<Image
 						className="rounded-full h-[50px] w-[50px] border-2 border-slate-300/50"
 						src={user}
@@ -290,7 +290,7 @@ const Header = () => {
                          </div>
                     </div>
 
-                    <div className="rounded-full w-full p-1.5 lg:p-1 bg-slate-300/50 mb-8 lg:mb-4 flex items-center place-content-center justify-between gap-2 dark:bg-slate-800 dark:text-slate-300">
+                    <div className="rounded-full w-full p-1.5 lg:p-1 bg-slate-300/50 mb-8 lg:mb-4 flex justify-between gap-2 dark:bg-slate-800 dark:text-slate-300">
                         <button
                             className={`rounded-full py-1.5 lg:py-1 px-3 flex items-center gap-1.5 w-full justify-evenly hover:bg-slate-900 hover:text-slate-400 ${theme === "dark" ? "bg-slate-900 text-slate-400" : ""}`}
                             type="button"
@@ -314,7 +314,7 @@ const Header = () => {
 				</nav>
 			</div>
 
-            <div className={`absolute w-full z-50 top-full p-4 grid gap-4 lg:hidden lg:not-sr-only bg-white dark:bg-slate-900 rounded-b-xl border-b transition-all duration-500 ease-in-out dark:border-slate-800 border-slate-400/50 dark:focus-within:border-slate-400 focus-within:border-slate-800/50 ${isSearchBarOpen ? "translate-y-0" : "-translate-y-[200%]"}`}>
+            <div className={`absolute w-full z-50 top-full p-4 grid gap-4 sm:w-1/2 sm:left-1/4 sm:border lg:hidden lg:not-sr-only bg-white dark:bg-slate-900 rounded-b-xl border-b transition-all duration-500 ease-in-out dark:border-slate-800 border-slate-400/50 dark:focus-within:border-slate-400 focus-within:border-slate-800/50 ${isSearchBarOpen ? "translate-y-0" : "-translate-y-[200%]"}`}>
                 <div className="flex items-center gap-3 bg-white z-50 dark:bg-slate-900 dark:text-slate-400">
 					<Image
 						className="rounded-full h-[40px] w-[40px] border-2 border-slate-300/50"

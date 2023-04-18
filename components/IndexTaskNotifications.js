@@ -9,25 +9,25 @@ const IndexTaskNotifications = () => {
 	const isNotificationBarOpen = useToggleNotificationBar((state) => state.isNotificationBarOpen);
 
     return (
-		<aside className={`z-10 lg:border-l lg:border-slate-300/50 lg:dark:border-slate-800 w-full fixed right-0 lg:w-[30%] h-screen transition-transform ease-in-out duration-500 top-[4.76rem] lg:top-[5.2rem] ${isNotificationBarOpen ? "translate-x-0" : "translate-x-full"}`}>
-			<div className="fixed right-0 left-0 top-0 w-full h-screen bg-slate-200 dark:bg-slate-800 lg:left-auto lg:border-l lg:border-slate-300/50">
-				<div className="flex items-center justify-between gap-1 pt-8 lg:pt-4 px-4 bg-white dark:bg-slate-900 border-b border-slate-300 dark:border-slate-900">
+		<aside className={`z-10 sm:border-l sm:border-slate-300/50 sm:dark:border-slate-800 w-full fixed right-0 sm:w-1/2 lg:w-[30%] h-screen transition-transform ease-in-out duration-500 top-[4.76rem] lg:top-[5.2rem] ${isNotificationBarOpen ? "translate-x-0" : "translate-x-full"}`}>
+			<div className="fixed right-0 left-0 top-0 w-full h-screen bg-slate-200 dark:bg-slate-800 sm:left-auto sm:border-l sm:border-slate-300/50 sm:dark:border-slate-800">
+				<div className="flex items-center justify-between gap-2 pt-8 lg:pt-4 px-4 bg-white dark:bg-slate-900 border-b border-slate-300 dark:border-slate-700 max-w-full overflow-x-auto no-scrollbar">
 					<button
-						className="text-slate-500 transition-all ease-linear hover:border-b-2 border-0 hover:font-bold hover:text-slate-900 hover:border-slate-900 pb-2 dark:hover:text-slate-200"
+						className="text-slate-500 transition-all ease-linear hover:border-b-2 border-0 hover:font-bold hover:text-slate-900 hover:border-slate-900 pb-2 dark:hover:text-slate-200 dark:hover:border-slate-200 shrink-0"
 						type="button"
 					>
 						Messages
 					</button>
 
 					<button
-						className="border-b-2 border-slate-900 text-slate-900 font-bold dark:text-slate-200 dark:border-slate-200 pb-2"
+						className="border-b-2 border-slate-900 text-slate-900 font-bold dark:text-slate-200 dark:border-slate-200 pb-2 shrink-0"
 						type="button"
 					>
 						Today’s Tasks
 					</button>
 
 					<button
-						className="text-slate-500 transition-all ease-linear hover:border-b-2 border-0 hover:font-bold hover:text-slate-900 hover:border-slate-900 pb-2 dark:hover:text-slate-200"
+						className="text-slate-500 transition-all ease-linear hover:border-b-2 border-0 hover:font-bold hover:text-slate-900 hover:border-slate-900 pb-2 dark:hover:text-slate-200 dark:hover:border-slate-200 shrink-0"
 						type="button"
 					>
 						Last Activity
@@ -46,7 +46,7 @@ const IndexTaskNotifications = () => {
 							</div>
 
 							<button
-								className="btn py-1.5 px-4 inline-flex items-center gap-2 bg-sky-500/10 text-sky-700"
+								className="btn py-1.5 px-4 inline-flex items-center gap-2 bg-sky-100/50 text-sky-800 hover:text-sky-400 hover:bg-[#7dd3fc1a] dark:text-sky-500 dark:bg-[#7dd3fc1f]"
 								type="button"
 								title="Add new task"
 							>
@@ -102,12 +102,12 @@ const IndexTaskNotifications = () => {
 						<div className="grid gap-4">
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -118,7 +118,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
@@ -165,12 +165,12 @@ const IndexTaskNotifications = () => {
 
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -181,7 +181,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
@@ -228,12 +228,12 @@ const IndexTaskNotifications = () => {
 
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -244,7 +244,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
@@ -291,12 +291,12 @@ const IndexTaskNotifications = () => {
 
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -307,7 +307,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
@@ -353,12 +353,12 @@ const IndexTaskNotifications = () => {
 							</div>
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -369,7 +369,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
@@ -416,12 +416,12 @@ const IndexTaskNotifications = () => {
 
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="line-through font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -432,7 +432,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
@@ -479,12 +479,12 @@ const IndexTaskNotifications = () => {
 
 							<div className="bg-white rounded-xl p-4 divide-y divide-y-300/50 dark:divide-y-slate-900">
 								<div className="flex items-center justify-between gap-2 pb-4">
-									<div className="-space-y-1.5">
+									<div className="space-y-0.5">
 										<h3 className="line-through font-bold text-md text-slate-900 decoration-slate-700">
 											Client Review & Feedback
 										</h3>
 
-										<p className="text-slate-400 font-bold text-sm">
+										<p className="text-slate-700 font-bold text-sm">
 											Web development
 										</p>
 									</div>
@@ -495,7 +495,7 @@ const IndexTaskNotifications = () => {
 									/>
 								</div>
 
-								<div className="flex items-center justify-between gap-2 pt-4">
+								<div className="flex items-center justify-between gap-2 pt-4 max-w-full overflow-x-auto no-scrollbar">
 									<p className="text-slate-400 font-bold text-xs">
 										April 16, 10:00 PM - 10:30 PM
 									</p>
